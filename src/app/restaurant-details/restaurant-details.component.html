@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="details-container">
+    <h3>{{ restaurantDetails?.name }}</h3>
+    <h2>{{ restaurantDetails?.rating }}</h2>
+    <h2>{{ restaurantDetails?.address }}</h2>
+  </div>
+
+  <div *ngFor="let data of menu | keyvalue">
+    <div class="accoridan-parent" (click)="accordianClick(data.key)">
+      <p>{{ data.key }}</p>
+    </div>
+    <div [ngClass]="accordianKey == data.key ? 'show' : 'hide'">
+      <div
+        *ngFor="let innerData of $any(data.value) | keyvalue"
+        class="accordian-child"
+      >
+        <p>{{ innerData.key }}</p>
+        @if (alreadyInCartCheck(innerData.key)) {
+        <button (click)="handleDeleteFromCart(innerData)">Delete</button>
+        } @else {
+        <button (click)="handleAddToCart(innerData)">Add to cart</button>
+        }
+        <!-- <p>{{ innerData.value }}</p> -->
+      </div>
+    </div>
+  </div>
+</div>

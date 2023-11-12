@@ -1,0 +1,49 @@
+.accoridan-parent {
+  border: 1px solid #000;
+  cursor: pointer;
+  padding: 20px;
+  border-radius: 4px;
+  background-color: var(--primary-background);
+  font-weight: 800;
+
+  color: #f5f5f5;
+}
+.show {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.hide {
+  display: none;
+}
+.container {
+  padding: 30px;
+}
+.container h3 {
+  font-weight: 800;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.accordian-child {
+  border: 1px solid #000;
+  background-color: var(--secondary-background);
+  padding: 20px 40px;
+  border-radius: 4px;
+  color: #f5f5f5;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.accordian-child button {
+  padding: 10px;
+  background-color: var(--theme-color);
+  border-radius: 4px;
+}
+.details-container {
+  padding: 20px;
+  background-color: var(--accent-color);
+  border-radius: 4px;
+  margin-bottom: 20px;
+  color: var(--primary-background);
+}

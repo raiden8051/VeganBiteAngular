@@ -1,0 +1,19 @@
+<div class="food-section">
+  <div class="food-container" *ngFor="let f of food">
+    <!-- {{ f.name }} -->
+    <div class="food-card">
+      <div class="food-card-img">
+        <img src="{{ f.img }}" alt="" />
+      </div>
+      <div class="food-card-content">
+        <h3>{{ f.name }}</h3>
+        <div class="food-card-price">
+          <span class="food-card-price-amount">Rating: {{ f.rating }}</span>
+          <!-- <span class="food-card-price-unit">/per person</span> -->
+        </div>
+        <p>Address: {{ f.address }}</p>
+        <button class="food-card-btn" (click)="onClick(f)">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</div>

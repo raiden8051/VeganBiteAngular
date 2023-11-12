@@ -1,0 +1,4 @@
+.navbar-container,
+.navbar-elements {
+  background-color: var(--secondary-background);
+}
