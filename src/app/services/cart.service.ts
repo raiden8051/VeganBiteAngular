@@ -9,6 +9,9 @@ export class CartService {
 
   constructor() {
     this.cartData = [];
+    if (localStorage.getItem('cartData')) {
+      this.cartData = JSON.parse(localStorage.getItem('cartData') || '[]');
+    }
   }
 
   getCartData() {
@@ -21,8 +24,10 @@ export class CartService {
       price: data.price,
       quantity: data.quantity,
     });
+    localStorage.setItem('cartData', JSON.stringify(this.cartData));
   }
   setCartArray(data: any) {
     this.cartData = data;
+    localStorage.setItem('cartData', JSON.stringify(this.cartData));
   }
 }

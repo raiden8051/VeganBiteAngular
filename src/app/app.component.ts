@@ -3,9 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { FoodComponent } from './food/food.component';
 import { LoginComponent } from './login/login.component';
-import { routes } from './app.routes';
 
 @Component({
   selector: 'app-root',

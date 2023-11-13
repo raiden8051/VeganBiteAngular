@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { CartService } from '../services/cart.service';
 import { CartModel } from '../models/CartModel';
+import { GetFoodDataService } from '../services/get-food-data.service';
 
 @Component({
   selector: 'app-restaurant-details',
@@ -12,25 +13,36 @@ import { CartModel } from '../models/CartModel';
   styleUrl: './restaurant-details.component.css',
 })
 export class RestaurantDetailsComponent {
-  restaurantDetails;
-  menu;
+  restaurantDetails: any;
+  menu: any;
   accordianKey: any;
   cart;
   alreadyInCart;
 
-  constructor(private router: Router, private cartData: CartService) {
-    this.restaurantDetails =
-      this.router.getCurrentNavigation()?.extras?.queryParams?.['clickData'];
-
-    this.cart = this.cartData;
+  constructor(
+    private router: Router,
+    private cartData: CartService,
+    private foodData: GetFoodDataService
+  ) {
+    let id;
+    if (this.router.getCurrentNavigation()?.extras?.queryParams) {
+      id =
+        this.router.getCurrentNavigation()?.extras?.queryParams?.[
+          'curr_rest_id'
+        ];
+    } else {
+      id = JSON.parse(localStorage.getItem('curr_rest_id') || '{}');
+    }
+    this.getRestaurantDataById(id);
     this.alreadyInCart = this.cartData.getCartData();
-    console.log('first', this.alreadyInCart);
+    this.cart = this.cartData;
+  }
 
-    this.menu =
-      this.router.getCurrentNavigation()?.extras?.queryParams?.[
-        'clickData'
-      ]?.menu;
-    console.log(this.restaurantDetails);
+  getRestaurantDataById(id: any) {
+    let rest = this.foodData.getFoodData();
+    rest = rest.filter((item) => item._id['$oid'] === id);
+    this.restaurantDetails = rest[0];
+    this.menu = rest[0]?.menu;
   }
 
   accordianClick(key: any) {

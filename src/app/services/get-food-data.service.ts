@@ -13,8 +13,4 @@ export class GetFoodDataService {
   getFoodData() {
     return this.foodData;
   }
-
-  getFood() {
-    return 'hello';
-  }
 }

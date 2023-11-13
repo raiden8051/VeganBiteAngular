@@ -19,10 +19,10 @@ export class FoodComponent {
     this.food = this.foodData.getFoodData();
   }
   onClick(clickData: any) {
-    console.log(clickData.name);
+    localStorage.setItem('curr_rest_id', JSON.stringify(clickData._id['$oid']));
 
     this.router.navigate(['/restaurant-details'], {
-      queryParams: { clickData },
+      queryParams: { curr_rest_id: clickData._id['$oid'] },
     });
   }
 }
